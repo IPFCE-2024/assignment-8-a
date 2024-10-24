@@ -11,7 +11,7 @@ node* isort(node *list) {
     while(next_element != NULL) {
         node* current = next_element;
         next_element = next_element->next;
-        if(sorted = NULL || current->data < sorted->data){
+        if(sorted == NULL || current->data < sorted->data){
             current->next = sorted;
             sorted = current;
             continue;
