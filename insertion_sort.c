@@ -4,38 +4,24 @@
 
 node* isort(node *list) {
     node* sorted = NULL;
-    
+    node* current = list;
 
-    node* next_element = list;
-
-    while(next_element != NULL) {
-        node* current = next_element;
-        next_element = next_element->next;
+    while(current != NULL) {
+        node* next_element = current->next;
         if(sorted == NULL || current->data < sorted->data){
             current->next = sorted;
             sorted = current;
-            continue;
-        }
+            
+        } else{
         node* next_sorted = sorted;
-    while(next_sorted->next != NULL) {
-        if(current->data < next_sorted->next->data){
-            current->next = next_sorted->next;
-            next_sorted->next = current; 
-            break;
-        }
+    while(next_sorted->next != NULL && next_sorted->next->data < current->data) {
         next_sorted = next_sorted->next;
+        }
+    current->next = next_sorted->next;
+    next_sorted->next = current;
     }
-    if(next_sorted->next == NULL) {
-        next_sorted->next = current;
-        current->next = NULL;
+    current = next_element;
     }
-
-        
-    }
-
-
-
-
-    return list;
+    return sorted;
 }
 
