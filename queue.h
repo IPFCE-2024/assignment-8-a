@@ -1,14 +1,22 @@
 #pragma once
 
+#ifndef QUEUE_H
+#define QUEUE_H
 #include <stdbool.h>
 
 #include "node.h"
+
+typedef struct newNode {
+  int data;
+  struct newNode* next;
+} newNode;
  
 typedef struct queue {
   int size;
   node *front;
   node *rear;
 } queue;
+
 
 typedef struct {
   node *head;
@@ -23,3 +31,5 @@ void push(int element, node **head);
 int pop(node **head);
 void enqueueStack(queue *q, int x);
 int dequeueStack(queue *q);
+
+#endif
